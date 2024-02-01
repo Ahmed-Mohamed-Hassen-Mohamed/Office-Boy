@@ -1,0 +1,75 @@
+<div class="row m-0 p-4">
+  <div
+    class="p-3 pt-0 pb-0 mb-4 text-white d-flex justify-content-between align-items-center"
+    style="border-color: #354670; background-color: transparent"
+  >
+    <p class="fw-bolder d-flex align-items-center">
+      <mat-icon class="fs-4">category</mat-icon
+      ><span class="m-3 mb-0 mt-0">Category</span>
+    </p>
+    <button
+      class="btn btn-info d-flex align-items-center"
+      style="padding: 6px;"
+      (click)="addCategory()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="card mb-3" style="background-color: #1e2c50">
+    <div
+      class="card m-4 p-3"
+      style="border: 0; background-color: rgb(47, 63, 105); color: white"
+    >
+      <div class="row justify-content-between">
+        <div class="col-sm-2">Image</div>
+        <div class="col-sm-3">Name</div>
+        <div class="col-sm-2 col-md-3">Created By</div>
+        <div class="col-sm-2">Action</div>
+      </div>
+    </div>
+    <div class="m-4 mt-0 mb-3 p-3 pt-1 pb-1">
+      <div *ngFor="let category of categories">
+        <div
+          class="row justify-content-between"
+          style="color: white"
+          *ngIf="
+            searchValue == '' ||
+            category.name.toLowerCase().includes(searchValue.toLowerCase())
+          "
+        >
+          <div class="col-sm-2 d-flex align-items-center">
+            <img
+              [src]="'data:image/jpg;base64,' + category.image"
+              class="p-1"
+              style="width: 70px; height: 50px; border: 2px solid silver"
+            />
+          </div>
+          <div class="col-sm-3 d-flex align-items-center">{{ category.name }}</div>
+          <div class="col-sm-2 col-md-3 d-flex align-items-center">{{ category.owner.username }}</div>
+          <div class="col-sm-2 d-flex align-items-center">
+            <p
+              class="rounded-circle d-flex align-items-center justify-content-center"
+              style="
+                width: 35px;
+                height: 35px;
+                border: 2px solid #0dcaf0;
+                color: #0dcaf0;
+              "
+              (click)="updateCategory(category._id)"
+            >
+              <mat-icon>launched</mat-icon>
+            </p>
+            <p
+              class="rounded-circle text-danger d-flex align-items-center justify-content-center"
+              style="width: 35px; height: 35px; border: 2px solid red; margin-left: 20px;"
+              (click)="deleteCategory(category._id)"
+            >
+              <mat-icon>deleteOutline</mat-icon>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />

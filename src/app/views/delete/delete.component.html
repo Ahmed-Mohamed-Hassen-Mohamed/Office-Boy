@@ -1,0 +1,87 @@
+<div
+  class="p-5 pt-4 pb-4 shadow"
+  style="background-color: #1e2c50; z-index: 222; border: 2px solid #354670"
+  mat-dialog-content
+>
+  <div *ngIf="data.i == 0">
+    <p
+      class="text-center d-flex align-items-center justify-content-center text-white"
+    >
+      <span
+        class="rounded-circle text-danger d-flex align-items-center justify-content-center m-2 mt-0 mb-0"
+        style="width: 35px; height: 35px; border: 2px solid red"
+      >
+        <mat-icon>deleteOutline</mat-icon>
+      </span>
+      <span class="m-2 mt-0 mb-0"> Do You want to delete this employee ?</span>
+    </p>
+  </div>
+  <div *ngIf="data.i == 1">
+    <p
+      class="text-center d-flex align-items-center justify-content-center text-white"
+    >
+      <span
+        class="rounded-circle text-danger d-flex align-items-center justify-content-center m-2 mt-0 mb-0"
+        style="width: 35px; height: 35px; border: 2px solid red"
+      >
+        <mat-icon>deleteOutline</mat-icon>
+      </span>
+      <span class="m-2 mt-0 mb-0">
+        Do You want to delete this office boy ?
+      </span>
+    </p>
+  </div>
+  <div *ngIf="data.i == 2">
+    <p
+      class="text-center d-flex align-items-center justify-content-center text-white"
+    >
+      <span
+        class="rounded-circle text-danger d-flex align-items-center justify-content-center m-2 mt-0 mb-0"
+        style="width: 35px; height: 35px; border: 2px solid red"
+      >
+        <mat-icon>deleteOutline</mat-icon>
+      </span>
+      <span class="m-2 mt-0 mb-0">Do You want to delete this category ?</span>
+    </p>
+  </div>
+  <div *ngIf="data.i == 3">
+    <p
+      class="text-center d-flex align-items-center justify-content-center text-white"
+    >
+      <span
+        class="rounded-circle text-danger d-flex align-items-center justify-content-center m-2 mt-0 mb-0"
+        style="width: 35px; height: 35px; border: 2px solid red"
+      >
+        <mat-icon>deleteOutline</mat-icon>
+      </span>
+      <span class="m-2 mt-0 mb-0"
+        >Do You want to delete this sub category ?</span
+      >
+    </p>
+  </div>
+  <div *ngIf="data.i == 4">
+    <p
+      class="text-center d-flex align-items-center justify-content-center text-white"
+    >
+      <span
+        class="rounded-circle text-danger d-flex align-items-center justify-content-center m-2 mt-0 mb-0"
+        style="width: 35px; height: 35px; border: 2px solid red"
+      >
+        <mat-icon>deleteOutline</mat-icon>
+      </span>
+      <span class="m-2 mt-0 mb-0">Do You want to delete this room ?</span>
+    </p>
+  </div>
+  <div class="d-flex justify-content-between mt-4">
+    <button class="btn btn-secondary col-5" mat-dialog-close="true">
+      Cancel
+    </button>
+    <button
+      class="btn btn-danger col-5"
+      (click)="deleteitem()"
+      mat-dialog-close="true"
+    >
+      Confirm
+    </button>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="row m-0" style="height: 100% !important;" *ngIf="token != undefined">
+  <div
+    class="col-3 p-0"
+    style="
+      background-color: #1e2c50;
+      border-right: 1px solid #354670;
+      width: 21% !important;
+      height: 100% !important;
+    "
+  >
+    <app-navbar></app-navbar>
+  </div>
+  <div
+    class="col-9 p-0"
+    style="
+      width: 79% !important;
+      height: 100%;
+      overflow-y: auto;
+    "
+  >
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<app-sign-in *ngIf="token == undefined"></app-sign-in>
+<!-- <mat-sidenav-container (click)="updateData()"
+  >SettingsOutlined
+  <mat-sidenav mode="push" [(opened)]="opened">
+    <app-navbar></app-navbar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->

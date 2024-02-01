@@ -1,0 +1,74 @@
+.cafe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
+.coffee-cup {
+  position: relative;
+  animation: coffee-cup 2s infinite alternate; /* Steam rise animation */
+}
+
+.cup {
+  width: 150px;
+  height: 220px;
+  background-color: #354670; /* Brown color for the cup */
+  border-radius: 0 0 20px 20px;
+  border: 2px solid #0dcaf0;
+  border-top: 0;
+}
+
+.coffee {
+  width: 75px;
+  height: 75px;
+  background-color: #0dcaf0; /* Dark brown color for the coffee */
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
+  animation: bobbing 2s infinite alternate; /* Cup bobbing animation */
+}
+
+.steam {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid #0dcaf0; /* Gray color for steam */
+  border-radius: 75%;
+  position: absolute;
+  top: 0px;
+  right: -30px;
+  transform: rotateZ(90deg) !important;
+  animation: steam-rise 2s infinite alternate; /* Steam rise animation */
+}
+
+@keyframes bobbing {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-183.5%);
+  }
+}
+
+@keyframes steam-rise {
+  0% {
+    right: -30px;
+  }
+  100% {
+    right: -60px;
+  }
+}
+
+@keyframes coffee-cup {
+  0% {
+    scale: 120%;
+    transform: rotateZ(0deg);
+  }
+  100% {
+    scroll-behavior: smooth;
+    transform: rotateZ(20deg);
+  }
+}

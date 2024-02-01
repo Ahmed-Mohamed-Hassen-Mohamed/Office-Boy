@@ -1,0 +1,7 @@
+.hover{
+  transition: all .2s;
+}
+
+.hover:hover {
+  background-color: #6e7ea5;
+}

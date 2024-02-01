@@ -1,0 +1,111 @@
+<div
+  class="d-flex align-items-center justify-content-center"
+  style="z-index: 222;"
+>
+  <div class="row" style="width: 100%;">
+    <div class="col-sm-6 d-flex justify-content-center align-items-center" style="height: 100vh;  background-color: #1e2c50; border-right: 2px solid #354670;">
+      <div class="text-center text-white fs-4">
+        <h2 class="fs-3 text-info" style="font-family: cursive !important;">Welcome to</h2>
+        <h1 class="text-white" style="font-family: cursive !important;"> Cafe</h1>
+      </div>
+    </div>
+    <div
+      class="col-sm-6 m-0 p-5 d-flex justify-content-center align-items-center"
+      style="height: 100vh; background-color: #111b31;"
+    >
+      <form
+        class="m-auto row mb-2 mt-2 p-5"
+        #userForm="ngForm"
+        (ngSubmit)="onSubmit(userForm.value)"
+      >
+        <div class="mb-4 col-sm-12 p-0" style="height: auto;">
+          <input
+            type="text"
+            class="form-control p-3 text-white"
+            placeholder="Username"
+            id="username"
+            ngModel
+            #username="ngModel"
+            required
+            minlength="5"
+            name="username"
+            style="
+              border-radius: 0;
+              background-color: #1e2c50;
+              border: 1px solid #354670;
+              font-size: 15px;
+            "
+          />
+          <div *ngIf="username.invalid && username.touched">
+            <p class="alert alert-danger" *ngIf="username.errors?.['required']">
+              Username is required...
+            </p>
+            <p
+              class="alert alert-danger"
+              *ngIf="username.errors?.['minlength']"
+            >
+              Username minlength is
+              {{username.errors?.['minlength'].requiredLength}}, but You have
+              entered {{username.errors?.['minlength'].actualLength}}
+            </p>
+          </div>
+        </div>
+        <div class="mb-4 position-relative p-0">
+          <input
+            [type]="hide ? 'password' : 'text'"
+            class="form-control p-3 text-white"
+            placeholder="Password"
+            id="password"
+            ngModel
+            #password="ngModel"
+            required
+            minlength="8"
+            name="password"
+            style="
+              border-radius: 0;
+              background-color: #1e2c50;
+              border: 1px solid #354670;
+              font-size: 15px;
+            "
+          />
+          <div
+            class="position-absolute end-0 text-white"
+            style="
+              background-color: transparent;
+              border: 0;
+              top: 17px;
+              margin-right: 10px;
+              border-radius: 40%;
+            "
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </div>
+          <div *ngIf="password.invalid && password.touched">
+            <p class="alert alert-danger" *ngIf="password.errors?.['required']">
+              Password is required...
+            </p>
+            <p
+              class="alert alert-danger"
+              *ngIf="password.errors?.['minlength']"
+            >
+              Password minlength is
+              {{password.errors?.['minlength'].requiredLength}}, but You have
+              entered {{password.errors?.['minlength'].actualLength}}
+            </p>
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-info text-white fw-bolder"
+          style="border: 0; z-index: 1111"
+          [disabled]="userForm.invalid"
+        >
+          Sign In
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

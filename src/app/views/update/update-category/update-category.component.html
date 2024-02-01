@@ -1,0 +1,97 @@
+<div
+  class=""
+  style="background-color: #1e2c50; z-index: 222; border: 2px solid #354670"
+  mat-dialog-content
+>
+  <h3
+    class="d-flex align-items-center justify-content-center pt-2 pb-4 text-center fs-5"
+    style="border-bottom: 2px solid #354670; color: white"
+  >
+    <span
+      class="rounded-circle d-flex align-items-center justify-content-center"
+      style="
+        width: 35px;
+        height: 35px;
+        border: 1px solid #0dcaf0;
+        color: #0dcaf0;
+      "
+    >
+      <mat-icon>launched</mat-icon>
+    </span>
+    <span class="text-white p-2 pt-0 pb-0"> Update this category</span>
+  </h3>
+  <div class="row m-0">
+    <form
+      class="col-lg-10 m-auto row m-0 mb-3 mt-3"
+      [formGroup]="userForm"
+      (ngSubmit)="onSubmit(userForm.value)"
+    >
+      <div class="mb-4 col-sm-12 p-0">
+        <input
+          type="text"
+          class="form-control p-2 text-white"
+          placeholder="Name"
+          id="name"
+          formControlName="name"
+          style="
+            border-radius: 0;
+            background-color: #111b31;
+            border: 1px solid #354670;
+            font-size: 15px;
+          "
+          [(ngModel)]="category.name"
+        />
+        <div
+          *ngIf="
+            userForm.controls.name.invalid && userForm.controls.name.touched
+          "
+        >
+          <p
+            class="alert alert-primary"
+            *ngIf="userForm.controls.name.errors?.['required']"
+          >
+            Title is required ...
+          </p>
+          <p
+            class="alert alert-primary"
+            *ngIf="userForm.controls.name.errors?.['minlength']"
+          >
+            Title minlength is
+            {{userForm.controls.name.errors?.['minlength'].requiredLength}}, but
+            You have entered
+            {{userForm.controls.name.errors?.['minlength'].actualLength}}
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-12 row">
+        <div class="col-sm-6 mb-3 p-0">
+          <input
+            type="file"
+            class="form-control p-2"
+            id="image"
+            (change)="handelUpload($event)"
+            formControlName="image"
+            style="display: none"
+          />
+          <label for="image" class="text-primary"
+            ><mat-icon>image</mat-icon>
+          </label>
+        </div>
+        <div class="mb-3 col-sm-6 row">
+          <div *ngFor="let img of images" class="col-3 p-1">
+            <img style="width: 80px; height: 60px" [src]="img" alt="" />
+          </div>
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-info text-white"
+        style="border: 0"
+        [disabled]="userForm.invalid"
+        mat-dialog-close="true"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

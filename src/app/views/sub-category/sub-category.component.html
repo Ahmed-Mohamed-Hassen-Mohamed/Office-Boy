@@ -1,0 +1,126 @@
+<div class="row m-0 p-4">
+  <div
+    class="p-3 pt-0 pb-0 mb-4 text-white d-flex justify-content-between align-items-center"
+    style="border-color: #354670; background-color: transparent"
+  >
+    <p class="fw-bolder d-flex align-items-center">
+      <mat-icon class="fs-4">coffee</mat-icon
+      ><span class="m-3 mb-0 mt-0">Sub Category</span>
+    </p>
+    <div class="d-flex">
+      <div class="menu">
+        <a
+          class="nav-link m-3 mt-0 mb-0"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <button
+            class="dropdown-toggle btn btn-outline-info d-flex align-items-center"
+          >
+            <span style="margin-right: 10px">{{ categoryName }}</span>
+          </button>
+        </a>
+
+        <div
+          class="dropdown-menu"
+          style="background-color: #354670; border: 1px solid #0dcaf0"
+        >
+          <p
+            class="p-2 text-center text-info mb-0 hover"
+            (click)="filter('category')"
+          >
+            Select All
+          </p>
+          <p
+            class="p-2 text-center text-info mb-0 hover"
+            *ngFor="let category of categories"
+            (click)="filter(category)"
+          >
+            {{ category.name }}
+          </p>
+        </div>
+      </div>
+      <button
+        class="btn btn-info d-flex align-items-center"
+        style="padding: 6px;"
+        (click)="addSubCategory()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="card mb-3" style="background-color: #1e2c50">
+    <div
+      class="card m-4 p-3"
+      style="border: 0; background-color: rgb(47, 63, 105); color: white"
+    >
+      <div class="row justify-content-between">
+        <div class="col-sm-2">Image</div>
+        <div class="col-sm-2 col-md-3">Name</div>
+        <div class="col-sm-2">Category</div>
+        <div class="col-sm-2 col-md-3">Created By</div>
+        <div class="col-sm-2">Action</div>
+      </div>
+    </div>
+    <div class="m-4 mt-0 mb-3 p-3 pt-1 pb-1">
+      <div *ngFor="let subCategory of subCategories">
+        <div
+          *ngIf="
+            categoryId == '' ||
+            subCategory.categoryId._id.toLowerCase().includes(categoryId)
+          "
+        >
+          <div
+            class="row mb-0 justify-content-between"
+            style="color: white"
+            *ngIf="
+              searchValue == '' ||
+              subCategory.name.toLowerCase().includes(searchValue)
+            "
+          >
+            <div class="col-sm-2 d-flex align-items-center">
+              <img
+                [src]="'data:image/jpg;base64,' + subCategory.image"
+                class="p-1"
+                style="width: 70px !important; height: 50px; border: 2px solid silver"
+              />
+            </div>
+            <div class="col-sm-2 col-md-3 d-flex align-items-center">
+              {{ subCategory.name }}
+            </div>
+            <div class="col-sm-2 d-flex align-items-center">
+              {{ subCategory.categoryId.name }}
+            </div>
+            <div class="col-sm-2 col-md-3 d-flex align-items-center">
+              {{ subCategory.owner.username }}
+            </div>
+            <div class="col-sm-2 d-flex align-items-center">
+              <p
+                class="rounded-circle d-flex align-items-center justify-content-center"
+                style="
+                  width: 35px;
+                  height: 35px;
+                  border: 2px solid #0dcaf0;
+                  color: #0dcaf0;
+                "
+                (click)="updateSubCategory(subCategory._id)"
+              >
+                <mat-icon>launched</mat-icon>
+              </p>
+              <p
+                class="rounded-circle text-danger d-flex align-items-center justify-content-center"
+                style="width: 35px; height: 35px; border: 2px solid red; margin-left: 20px;"
+                (click)="deleteSubCategory(subCategory._id)"
+              >
+                <mat-icon>deleteOutline</mat-icon>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />

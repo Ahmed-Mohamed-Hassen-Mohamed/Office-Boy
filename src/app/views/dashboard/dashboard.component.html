@@ -1,0 +1,156 @@
+<div class="m-5 mt-4 pb-0">
+  <div class="row m-0 d-flex justify-content-between p-4 pt-0 pb-0 mb-4">
+    <div class="col-lg-5 mt-2">
+      <div
+        class="position-relative p-4 row m-0"
+        style="
+          height: 100%;
+          border: 2px solid #4a63a3;
+          background-color: #1e2c50;
+        "
+      >
+        <span
+          class="position-absolute top-0 start-0 m-3"
+          style="
+            border: 2px solid #299ee2;
+            background-color: #1e2c50;
+            width: 20px;
+            height: 20px;
+          "
+          (click)="getOrders(false)"
+          ><mat-icon>doneAll</mat-icon></span
+        >
+        <div class="col-12 m-3">
+          <p class="text-center mb-3 fs-2">{{ totalOfOrders }}</p>
+          <p class="text-center text-info fs-5 mb-0">Total Of Orders</p>
+        </div>
+        <div class="col-12 row m-2">
+          <div
+            class="col-md-6 d-flex align-items-center justify-content-center"
+          >
+            <mat-icon class="fs-2 text-info" style="width: 30px; height: 30px"
+              >man</mat-icon
+            >
+            <p class="text-center mb-0 fs-2">{{ male }}</p>
+          </div>
+          <div
+            class="col-md-6 d-flex align-items-center justify-content-center"
+          >
+            <mat-icon class="fs-2 text-info" style="width: 30px; height: 30px"
+              >woman</mat-icon
+            >
+            <p class="text-center mb-0 fs-2">{{ female }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7 mt-2">
+      <div
+        class="d-flex align-items-center"
+        style="
+          height: 100%;
+          border: 2px solid #4a63a3;
+          background-color: #1e2c50;
+          overflow-x: auto;
+        "
+      >
+        <div
+          class="col-3 p-2 pt-4 pb-4"
+          *ngFor="let category of categories"
+          (click)="filter(category._id)"
+        >
+          <div class="d-flex justify-content-center">
+            <img
+              [src]="'data:image/jpg;base64,' + category.image"
+              class="rounded-circle p-2 mb-3 m-auto"
+              style="width: 90%; height: 100px; border: 2px solid silver"
+            />
+          </div>
+          <p class="text-center mb-0">{{ category.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row m-0" style="height: 350px">
+    <div class="col-1 p-0" style="height: 350px">
+      <div class="" style="height: 77%; border-right: 2px solid #4a63a3">
+        <p class="text-center m-0" style="height: 20%">
+          {{ (totalOfOrders / 5) * 5 | number : "1.2-2" }}
+        </p>
+        <p class="text-center m-0" style="height: 20%">
+          {{ (totalOfOrders / 5) * 4 | number : "1.2-2" }}
+        </p>
+        <p class="text-center m-0" style="height: 20%">
+          {{ (totalOfOrders / 5) * 3 | number : "1.2-2" }}
+        </p>
+        <p class="text-center m-0" style="height: 20%">
+          {{ (totalOfOrders / 5) * 2 | number : "1.2-2" }}
+        </p>
+        <p class="text-center m-0" style="height: 20%">
+          {{ (totalOfOrders / 5) * 1 | number : "1.2-2" }}
+        </p>
+      </div>
+      <P class="m-0 mt-3" style="transform: rotateZ(-90deg)">Sub Category </P>
+    </div>
+    <div class="col-11 p-0" style="overflow-x: scroll; height: 105%">
+      <div class="d-flex" style="height: 77%">
+        <div
+          class="{{
+            categoryId == '' || subCategory.categoryId._id == categoryId
+              ? 'col-1'
+              : ''
+          }}"
+          *ngFor="let subCategory of subCategories"
+        >
+          <div
+            *ngIf="categoryId == '' || subCategory.categoryId._id == categoryId"
+            style="height: 100%; border-bottom: 2px solid #4a63a3"
+            class="position-relative"
+          >
+            <span
+              *ngIf="subCategory.quantity != undefined"
+              class="text-center position-absolute"
+              style="left: 45%"
+              [style.bottom.%]="(subCategory.quantity / totalOfOrders) * 100"
+            >
+              {{ subCategory.quantity }}
+            </span>
+            <span
+              *ngIf="subCategory.quantity == undefined"
+              class="text-center position-absolute bottom-0"
+              style="left: 45%"
+              >0</span
+            >
+            <div
+              class="position-absolute bottom-0 start-0"
+              [style.height.%]="(subCategory.quantity / totalOfOrders) * 100"
+              style="
+                width: 100%;
+                background-color: #1e2c50;
+                border: 1px solid #4a63a3;
+              "
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex" style="display: block; height: 23%">
+        <div
+          class="{{
+            categoryId == '' || subCategory.categoryId._id == categoryId
+              ? 'col-1 mt-1'
+              : ''
+          }}"
+          style="height: 100%1 !important; overflow-y: hidden"
+          *ngFor="let subCategory of subCategories"
+        >
+          <P
+            class="m-0 p-1"
+            style="font-size: 13px"
+            *ngIf="categoryId == '' || subCategory.categoryId._id == categoryId"
+            >{{ subCategory.name }}</P
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
