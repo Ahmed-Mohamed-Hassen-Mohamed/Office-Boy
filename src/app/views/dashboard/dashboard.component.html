@@ -9,7 +9,7 @@
           background-color: #1e2c50;
         "
       >
-        <span
+        <button
           class="position-absolute top-0 start-0 m-3"
           style="
             border: 2px solid #299ee2;
@@ -17,9 +17,11 @@
             width: 20px;
             height: 20px;
           "
+          [disabled]="all"
           (click)="getOrders(false)"
-          ><mat-icon>doneAll</mat-icon></span
         >
+          <mat-icon style="color: white;">doneAll</mat-icon>
+        </button>
         <div class="col-12 m-3">
           <p class="text-center mb-3 fs-2">{{ totalOfOrders }}</p>
           <p class="text-center text-info fs-5 mb-0">Total Of Orders</p>
