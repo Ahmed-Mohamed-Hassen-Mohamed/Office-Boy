@@ -18,6 +18,7 @@ export class DashboardComponent {
   categoryId = '';
   male = 0;
   female = 0;
+  all = false;
   ngOnInit(): void {
     this.getCategories();
     this.getSubCategories();
@@ -39,6 +40,7 @@ export class DashboardComponent {
     });
   }
   getOrders(temp=true) {
+    this.all = true;
     this.totalOfOrders = 0;
     this.male = 0;
     this.female = 0;
@@ -71,6 +73,7 @@ export class DashboardComponent {
     });
   }
   filter(id: any) {
+    this.all = false;
     this.categoryId = id;
     this.totalOfOrders = 0;
     this.male = 0;
