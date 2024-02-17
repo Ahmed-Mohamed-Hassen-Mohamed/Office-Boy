@@ -27,7 +27,7 @@
   border-top: 5px solid #1e2c50;
   border-right: 5px solid #1e2c50;
   border-bottom: 5px solid #4a63a3;
-  animation: cuircle-2 2s infinite; /* Steam rise animation */
+  animation: cuircle-2 2s infinite alternate; /* Steam rise animation */
 }
 
 @keyframes cuircle-2 {
