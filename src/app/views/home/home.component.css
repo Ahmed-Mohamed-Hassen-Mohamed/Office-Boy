@@ -7,27 +7,29 @@
 
 .coffee-cup {
   position: relative;
-  animation: coffee-cup 2s infinite alternate; /* Steam rise animation */
+  border-radius: 20px 0 40px 40px;
+  border-left: 3px solid #0dcaf0;
+  border-right: 3px solid #0dcaf0;
+  border-bottom: 4px solid #0dcaf0;
+  animation: coffee-cup 2s infinite alternate;
 }
 
 .cup {
   width: 150px;
   height: 220px;
-  background-color: #354670; /* Brown color for the cup */
-  border-radius: 0 0 20px 20px;
-  border: 2px solid #0dcaf0;
-  border-top: 0;
+  background-color: #354670;
+  border-radius: 20px 0 40px 40px;
 }
 
 .coffee {
   width: 75px;
   height: 75px;
-  background-color: #0dcaf0; /* Dark brown color for the coffee */
+  background-color: #0dcaf0;
   border-radius: 50%;
   position: absolute;
   bottom: 5px;
   left: 20px;
-  animation: bobbing 2s infinite alternate; /* Cup bobbing animation */
+  animation: bobbing 2s infinite alternate;
 }
 
 .steam {
@@ -35,13 +37,17 @@
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-bottom: 30px solid #0dcaf0; /* Gray color for steam */
+  border-bottom: 30px solid #0dcaf0;
   border-radius: 75%;
   position: absolute;
   top: 0px;
   right: -30px;
   transform: rotateZ(90deg) !important;
-  animation: steam-rise 2s infinite alternate; /* Steam rise animation */
+  animation: steam-rise 2s infinite alternate;
+}
+
+.cupp {
+  animation: cupp 2s infinite alternate;
 }
 
 @keyframes bobbing {
@@ -70,5 +76,30 @@
   100% {
     scroll-behavior: smooth;
     transform: rotateZ(20deg);
+  }
+}
+
+@keyframes cupp {
+  0% {
+    border: 0px;
+    height: 0px;
+    border-left: 4px solid #354670;
+  }
+  25% {
+    border: 0px;
+    border-right: 4px solid #354670;
+  }
+  50% {
+    border: 0px;
+    border-bottom: 4px solid #354670;
+  }
+  75% {
+    border: 0px;
+    border-left: 5px solid #354670;
+  }
+  100% {
+    border: 0px;
+    height: 25%;
+    border-right: 4px solid #354670;
   }
 }
