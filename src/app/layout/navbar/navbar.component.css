@@ -1,8 +1,56 @@
 .hover {
   cursor: pointer;
   border-radius: 5px;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 .hover:hover {
   background-color: #0dcaf0;
+}
+
+.cuircle-1 {
+  background-color: #666666;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border-top: 5px solid #4a63a3;
+  border-right: 5px solid #4a63a3;
+  border-bottom: 5px solid #1e2c50;
+  border-left: 5px solid #4a63a3;
+  animation: cuircle-1 2s infinite; /* Steam rise animation */
+}
+.cuircle-2 {
+  background-color: #17292c;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border-left: 5px solid #1e2c50;
+  border-top: 5px solid #1e2c50;
+  border-right: 5px solid #1e2c50;
+  border-bottom: 5px solid #4a63a3;
+  animation: cuircle-2 2s infinite; /* Steam rise animation */
+}
+
+@keyframes cuircle-2 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes cuircle-1 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.cuircle {
+  background-color: #0dcaf0;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
 }
